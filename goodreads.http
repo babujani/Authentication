@@ -4,9 +4,9 @@ POST http://localhost:3000/users/
 Content-Type: application/json
 
 {   
-    "name":"rahul11",
-    "username":"rahul11213",
-    "password": "rahul@45161",
+    "name":"rahul111",
+    "username":"rahul111213",
+    "password": "rahul@451611",
     "gender": "Male",
     "location":"hyderabad"
 }
@@ -18,6 +18,6 @@ POST http://localhost:3000/login/
 Content-Type: application/json
 
 {
-    "username":"rahul123",
-    "password": "rahul@456"
+    "username":"rahul111213",
+    "password": "rahul@451611"
 }

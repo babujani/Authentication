@@ -58,7 +58,28 @@ app.post("/users/", async (request, response) => {
     await db.run(createUser);
     response.send("user Created");
   } else {
-    response.status = 400;
+    response.status(400);
     response.send("User already Exits");
+  }
+});
+
+//login verification
+app.post("/login/", async (request, response) => {
+  const { username, password } = request.body;
+  const selectUserQuery = `
+  select * from user  WHERE username='${username}'
+  ;`;
+  const dbUser = await db.get(selectUserQuery);
+  if (dbUser === undefined) {
+    response.status(400);
+    response.send("Invalid User");
+  } else {
+    const checkPassword = await bcrypt.compare(password, dbUser.password);
+    if (checkPassword === true) {
+      response.send("Login Sucssesfull");
+    } else {
+      response.status(400);
+      response.send("Invalid password");
+    }
   }
 });
